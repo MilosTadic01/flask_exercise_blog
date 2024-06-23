@@ -22,6 +22,7 @@ class Utils:
 
     @staticmethod
     def list_extant_ids():
+        """Produce and return a list of unique ids currently in use."""
         list_of_dicts = Utils.load_storage_data()
         list_of_used_ids = [bp_dict.get('id') for bp_dict in list_of_dicts]
         return list_of_used_ids
