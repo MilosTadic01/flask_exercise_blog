@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Flask Blog</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h1>Welcome to My Flask Blog!</h1>
+  {% for post in posts %}
+    <div class="post_row">
+      <div class="post">
+        <h2>{{ post.get('title') }}</h2>
+        <p><em>Written by {{ post.get('author') }}</em></p>
+        <p>{{ post.get('content') }}</p>
+      </div>
+      <div class="buttons_column">
+        <div>
+          <form class="post_button" action="/delete/{{ post.get('id') }}">
+            <label for="delete_post"></label>
+            <input style="align-self: flex-start; width: 60px;" type="submit" value="delete" id="delete_post">
+          </form>
+        </div>
+        <div>
+          <form class="post_button" action="/update/{{ post.get('id') }}">
+            <label for="update_post"></label>
+            <input style="align-self: flex-start; width: 60px;" type="submit" value="update" id="update_post">
+          </form>
+        </div>
+        <div>
+          <form class="likes_box" action="/like/{{ post.get('id') }}">
+            <label for="likes_box"></label>
+            <input type="submit" value="❤️" id="likes_box">
+            <p>{{ post.get('likes', 0) }}</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+  <form action="/add" style="display: flex; justify-content: center">
+    <div>
+      <label for="createnew_redir"></label><br>
+      <input type="submit" value="Create new post" id="createnew_redir">
+    </div>
+  </form>
+</body>
+</html>
