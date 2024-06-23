@@ -1,5 +1,6 @@
-import json
 import sys
+import os
+import json
 from typing import List, Dict
 
 DATA_PATH = "data/storage.json"
@@ -10,6 +11,9 @@ class Utils:
     @staticmethod
     def load_storage_data():
         """Returns List[Dict], of [] if empty file to start new dataset."""
+        if not os.path.exists(DATA_PATH):
+            fd = os.open(DATA_PATH, os.O_CREAT)
+            os.close(fd)
         with open(DATA_PATH, "r") as fd:
             raw = fd.read()
         if not raw:
