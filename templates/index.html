@@ -12,7 +12,7 @@
     <div class="post_row">
       <div class="post">
         <h2>{{ post.get('title') }}</h2>
-        <p><em>Written by {{ post.get('author') }}</em></p>
+        <p><em>Written by <span style="color: #325ca8">{{ post.get('author') }}</span></em></p>
         <p>{{ post.get('content') }}</p>
       </div>
       <div class="buttons_column">
@@ -41,7 +41,7 @@
   <form action="/add" style="display: flex; justify-content: center">
     <div>
       <label for="createnew_redir"></label><br>
-      <input type="submit" value="Create new post" id="createnew_redir">
+      <input type="submit" value="Create new post" id="createnew_redir" style="font-size: 1.6em; padding: 0.5em;">
     </div>
   </form>
 </body>
